@@ -64,6 +64,38 @@ Conda no usa `requirements.txt` sino `environment.yml`. Las diferencias principa
 
 Para exportar un ambiente existente: `conda env export --from-history > environment.yml`.
 
+## 5. Comparación con uv
+
+Referencia: https://www.datacamp.com/tutorial/python-uv
+
+| Aspecto | venv + pip | uv |
+|---|---|---|
+| Qué es | Módulo estándar de Python + instalador de paquetes | Gestor de paquetes y proyectos escrito en Rust |
+| Crear ambiente | python -m venv .venv | uv venv |
+| Instalar paquetes | pip install -r requirements.txt | uv pip install -r requirements.txt o uv add paquete |
+| Archivo de dependencias | requirements.txt | pyproject.toml + uv.lock |
+| Lock file | No tiene; se aproxima con pip freeze | uv.lock se genera automáticamente |
+| Velocidad | Normal | Mucho más rápido (resolución e instalación en paralelo, caché) |
+| Versiones de Python | No las instala; usa la del sistema | uv python install descarga y gestiona versiones |
+| Compatibilidad | Estándar, viene con Python | Acepta requirements.txt y comandos tipo pip |
+
+
+## 6. Comparación con Poetry
+
+Referencia: https://www.datacamp.com/tutorial/python-poetry
+
+| Aspecto | venv + pip | Poetry |
+|---|---|---|
+| Qué es | Módulo estándar de Python + instalador de paquetes | Herramienta de gestión de dependencias y empaquetado |
+| Crear ambiente | python -m venv .venv (manual) | Automático con poetry install |
+| Agregar paquete | pip install paquete y editar requirements.txt | poetry add paquete (actualiza pyproject.toml) |
+| Archivo de dependencias | requirements.txt | pyproject.toml + poetry.lock |
+| Grupos de dependencias | Archivos separados (ej. requirements-dev.txt) | Grupos en pyproject.toml (--group dev) |
+| Resolución de conflictos | Básica, reporta conflictos al instalar | Resuelve todo el árbol antes de instalar |
+| Empaquetar y publicar | Requiere setuptools, build y twine | poetry build y poetry publish |
+| Versiones de Python | No las instala | No las instala; usa las existentes (pyenv) |
+
+
 ## Capturas
 
 Las capturas están en `capturas/`.
