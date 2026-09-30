@@ -1,0 +1,16 @@
+name: taller2-ml
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - joblib
+  - jupyter
+  - pip
+  - pip:
+      - -e ./pipeline_sklearn
